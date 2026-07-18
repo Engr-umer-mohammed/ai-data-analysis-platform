@@ -76,7 +76,7 @@ python main.py
 
 ### 5. Run web dashboard
 ```bash
-streamlit run dashboard.py
+https://ai-data-analysis-platform-umer.streamlit.app/
 ```
 
 ### 6. Run Telegram bot
