@@ -16,6 +16,26 @@ class MarketingDomain(BaseDomain):
 
     DOMAIN_NAME = "marketing"
 
+    def detect(self, profile) -> bool:
+        """
+        Detect if the dataset belongs to Marketing domain.
+        Returns True if any marketing keywords are found
+        in the column names.
+        """
+        if profile is None or profile.dataframe is None:
+            return False
+
+        columns_lower = [
+            str(c).lower()
+            for c in profile.dataframe.columns
+        ]
+
+        for col in columns_lower:
+            if any(kw in col for kw in self.DOMAIN_KEYWORDS):
+                return True
+
+        return False
+
     # These are the ONLY keywords used for detection.
     # Keep them specific to marketing only.
     # Do NOT use words that appear in other domains.
